@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <a id="readme-top"></a>
 
 <!-- SHIELDS -->
@@ -150,3 +151,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [Ouch-shield]: https://img.shields.io/badge/Ouch!-tool-blue?label=Ouch!
 [Ouch-url]: https://github.com/ouch-org/ouch
 [time-screenshot]: https://cloud-l88kldf50-hack-club-bot.vercel.app/0image.png
+=======
+# Cat-battler
+A cat battler game made in Godot
+>>>>>>> 5f54d7b1617ee35dc303a20a9bbbf44d236cddd3
