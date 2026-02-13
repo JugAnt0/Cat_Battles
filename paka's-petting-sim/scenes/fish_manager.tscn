@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0plv1jgwgs6r"]
+
+[ext_resource type="Script" uid="uid://dhcw5t11n8msr" path="res://script/fish_manager.gd" id="1_sj8nf"]
+[ext_resource type="PackedScene" uid="uid://bw1k7f4axr3gs" path="res://scenes/gui.tscn" id="2_m4ddb"]
+
+[node name="fish manager" type="Node"]
+script = ExtResource("1_sj8nf")
+
+[node name="GUI" parent="." instance=ExtResource("2_m4ddb")]
+visible = false
+
+[node name="Fish_Counter2" parent="GUI" index="0"]
+offset_left = 767.0
+offset_bottom = 114.0
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="Fish_Counter" parent="GUI" index="1"]
+offset_left = 765.0
+offset_right = 1015.0
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="Sprite2D" parent="GUI" index="2"]
+position = Vector2(1048, 76)
+
+[editable path="GUI"]

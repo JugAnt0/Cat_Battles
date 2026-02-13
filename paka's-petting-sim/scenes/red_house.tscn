@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsqshd1sdl1jf"]
+
+[ext_resource type="Texture2D" uid="uid://b34wyurbkncap" path="res://assets/sprites/house.png" id="1_8nmui"]
+
+[sub_resource type="Gradient" id="Gradient_8nmui"]
+offsets = PackedFloat32Array(0.013333334, 0.64)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w6ogj"]
+gradient = SubResource("Gradient_8nmui")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6ogj"]
+size = Vector2(14, 20)
+
+[node name="RedHouse" type="CharacterBody2D"]
+z_index = 4
+
+[node name="House" type="Sprite2D" parent="."]
+position = Vector2(1, -32)
+texture = ExtResource("1_8nmui")
+
+[node name="PointLight2D" type="PointLight2D" parent="House"]
+position = Vector2(9, 14)
+color = Color(0.785436, 0.40938944, 0.11929617, 1)
+texture = SubResource("GradientTexture2D_w6ogj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -10)
+shape = SubResource("RectangleShape2D_w6ogj")

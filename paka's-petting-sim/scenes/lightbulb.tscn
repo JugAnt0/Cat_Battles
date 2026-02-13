@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwp0cvtrp30pq"]
+
+[ext_resource type="Texture2D" uid="uid://b0yp57dmp1r23" path="res://assets/sprites/inside-house.png" id="1_x8a88"]
+
+[sub_resource type="Gradient" id="Gradient_g6o1s"]
+offsets = PackedFloat32Array(0, 0.92)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xnlb5"]
+gradient = SubResource("Gradient_g6o1s")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.50934577, 0)
+
+[sub_resource type="Curve" id="Curve_1o38k"]
+_data = [Vector2(0.23837212, 1), 0.0, 0.0, 0, 0, Vector2(0.6046512, 0.52808994), 2.4157302, 2.4157302, 0, 0, Vector2(0.98837215, 0.23595512), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="lightbulb" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x8a88")
+region_enabled = true
+region_rect = Rect2(178, 51, 12, 9)
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(0, 15)
+color = Color(0.9882353, 0.96862745, 0.74509805, 1)
+energy = 0.2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.8352941)
+texture = SubResource("GradientTexture2D_xnlb5")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D"]
+position = Vector2(0, 4)
+amount = 2
+lifetime = 0.33
+speed_scale = 0.1
+randomness = 0.25
+emission_shape = 3
+emission_rect_extents = Vector2(6.3, 1)
+scale_amount_curve = SubResource("Curve_1o38k")
+color = Color(0.9882353, 0.96862745, 0.74509805, 1)

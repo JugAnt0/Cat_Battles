@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://63vravh4dbiq"]
+
+[ext_resource type="Texture2D" uid="uid://bucejpk8qacql" path="res://assets/sprites/sprites/paka's petting sim/back-back.png" id="1_jougr"]
+[ext_resource type="Texture2D" uid="uid://npjalupp7p2b" path="res://assets/sprites/sprites/paka's petting sim/back-mid.png" id="2_cbsqf"]
+[ext_resource type="Texture2D" uid="uid://dly7l4djtvjwl" path="res://assets/sprites/sprites/paka's petting sim/back-front.png" id="3_wisxt"]
+
+[node name="background" type="Node2D"]
+z_index = -10
+
+[node name="back" type="Parallax2D" parent="."]
+visible = false
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(256, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="back"]
+texture = ExtResource("1_jougr")
+
+[node name="mid" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.4, 1)
+repeat_size = Vector2(256, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="mid"]
+texture = ExtResource("2_cbsqf")
+
+[node name="front" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(256, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="front"]
+texture = ExtResource("3_wisxt")
