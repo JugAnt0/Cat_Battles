@@ -141,6 +141,7 @@ texture_normal = ExtResource("6_4fe80")
 texture_hover = ExtResource("7_omm7k")
 
 [node name="snow" parent="." instance=ExtResource("8_7v0ru")]
+position = Vector2(80, -2)
 
 [node name="Timer" type="Timer" parent="."]
 

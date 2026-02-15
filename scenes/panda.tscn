@@ -1,7 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://d113bwenjrw2x"]
+[gd_scene load_steps=23 format=3 uid="uid://d113bwenjrw2x"]
 
 [ext_resource type="Script" uid="uid://dh3uy86bsspoe" path="res://scripts/panda.gd" id="1_xyeg1"]
 [ext_resource type="Texture2D" uid="uid://cqlbk6uffd80a" path="res://sprites/sprites/Black cat-Sheet.png" id="2_228n7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7l22"]
+atlas = ExtResource("2_228n7")
+region = Rect2(160, 32, 40, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_whtoq"]
 atlas = ExtResource("2_228n7")
@@ -75,6 +79,14 @@ region = Rect2(400, 32, 40, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_n7l22")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_whtoq")
 }, {
 "duration": 1.0,
@@ -109,7 +121,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 11.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -154,8 +166,9 @@ script = ExtResource("1_xyeg1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-9, 1)
 sprite_frames = SubResource("SpriteFrames_n7l22")
-animation = &"sit"
+animation = &"run"
 autoplay = "sit"
+frame_progress = 0.58188546
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 0)
