@@ -3,8 +3,8 @@ extends Node2D
 @onready var back: Parallax2D = $back
 @onready var mid: Parallax2D = $mid
 @onready var front: Parallax2D = $FRONT
+@onready var player: AnimationPlayer = $Panda/Camera2D/AnimationPlayer
 
-@onready var player: AnimationPlayer = $Camera2D/AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
