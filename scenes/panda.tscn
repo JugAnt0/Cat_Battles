@@ -166,10 +166,9 @@ script = ExtResource("1_xyeg1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-9, 1)
 sprite_frames = SubResource("SpriteFrames_n7l22")
-animation = &"run"
+animation = &"sit"
 autoplay = "sit"
-frame_progress = 0.58188546
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 0)
+position = Vector2(-4, -1)
 shape = SubResource("RectangleShape2D_gam3p")

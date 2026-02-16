@@ -1,8 +1,8 @@
 extends Node2D
-@onready var camera_2d: Camera2D = $Camera2D
-@onready var back: Parallax2D = $back
-@onready var mid: Parallax2D = $mid
-@onready var front: Parallax2D = $FRONT
+@onready var camera_2d: Camera2D = $Panda/Camera2D
+@onready var back: Parallax2D = $Parallax/back
+@onready var mid: Parallax2D = $Parallax/mid
+@onready var front: Parallax2D = $Parallax/FRONT
 @onready var player: AnimationPlayer = $Panda/Camera2D/AnimationPlayer
 
 
