@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://obgysf2p8n20"]
+[gd_scene load_steps=29 format=4 uid="uid://obgysf2p8n20"]
 
 [ext_resource type="Texture2D" uid="uid://bheejfcror6km" path="res://sprites/sprites/sprites/paka's petting sim/ground.png" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://uhf5tp1ochd8" path="res://scripts/game.gd" id="1_yqjtg"]
@@ -291,11 +291,27 @@ tracks/0/keys = {
 "values": [Vector2(0.1, 0.1), Vector2(2.8, 2.8), Vector2(5, 5)]
 }
 
+[sub_resource type="Animation" id="Animation_dinhu"]
+resource_name = "zoom_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(3, 3), Vector2(0.1, 0.1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p57ef"]
 _data = {
 &"RESET": SubResource("Animation_iywne"),
 &"move": SubResource("Animation_p57ef"),
-&"zoom_in": SubResource("Animation_lbhrr")
+&"zoom_in": SubResource("Animation_lbhrr"),
+&"zoom_out": SubResource("Animation_dinhu")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir15t"]
@@ -303,6 +319,9 @@ size = Vector2(244, 256)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ca42v"]
 size = Vector2(116, 245)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
+size = Vector2(34, 50)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvuet"]
 texture = ExtResource("1_uwrxv")
@@ -443,13 +462,6 @@ shape = SubResource("RectangleShape2D_ca42v")
 
 [node name="Buttons" type="Node2D" parent="."]
 
-[node name="level_selection" type="TextureButton" parent="Buttons"]
-offset_left = -161.0
-offset_top = -64.0
-offset_right = -97.0
-texture_normal = ExtResource("3_0tnpc")
-texture_hover = ExtResource("10_dinhu")
-
 [node name="skin_selection" type="TextureButton" parent="Buttons"]
 offset_left = 149.0
 offset_top = -80.0
@@ -457,6 +469,27 @@ offset_right = 229.0
 texture_normal = ExtResource("11_kvuet")
 texture_hover = ExtResource("12_trtic")
 
+[node name="red_house" type="Area2D" parent="Buttons"]
+
+[node name="level_selection" type="TextureButton" parent="Buttons/red_house"]
+offset_left = -161.0
+offset_top = -64.0
+offset_right = -97.0
+texture_normal = ExtResource("3_0tnpc")
+texture_hover = ExtResource("10_dinhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/red_house"]
+position = Vector2(-129, -25)
+shape = SubResource("RectangleShape2D_dinhu")
+
 [node name="TileMapLayer4" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD+////AAACAAIAAAD7////AAABAAMAAAD6////AAAAAAMAAAACAP//AAACAAMAAAAJAP//AAAAAAIAAAAKAP//AAAAAAMAAAAHAP//AAABAAMAAAAFAP//AAAAAAMAAAA=")
 tile_set = SubResource("TileSet_trtic")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Buttons/skin_selection" to="." method="_on_skin_selection_pressed"]
+[connection signal="body_entered" from="Buttons/red_house" to="." method="_on_red_house_body_entered"]
+[connection signal="body_exited" from="Buttons/red_house" to="." method="_on_red_house_body_exited"]
+[connection signal="pressed" from="Buttons/red_house/level_selection" to="." method="_on_level_selection_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

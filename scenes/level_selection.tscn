@@ -1,7 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://px6nkudwypln"]
+[gd_scene load_steps=14 format=4 uid="uid://px6nkudwypln"]
 
+[ext_resource type="Script" uid="uid://7ecomghdh14r" path="res://scripts/level_selection.gd" id="1_0rqca"]
 [ext_resource type="Texture2D" uid="uid://bheejfcror6km" path="res://sprites/sprites/sprites/paka's petting sim/ground.png" id="1_gswpo"]
 [ext_resource type="FontFile" uid="uid://cpj4vdfgcbvqi" path="res://sprites/sprites/sprites/BUTTONS/Minecraft.ttf" id="2_3rh63"]
+[ext_resource type="Texture2D" uid="uid://jwl57n6c4dru" path="res://sprites/sprites/sprites/BUTTONS/unlocked_level.png" id="3_tuscg"]
+[ext_resource type="Texture2D" uid="uid://d23uxirebiunp" path="res://sprites/sprites/sprites/BUTTONS/unlocked_highlighted__level.png" id="4_2wv3l"]
+[ext_resource type="Texture2D" uid="uid://nr2ve2pvwrmf" path="res://sprites/sprites/sprites/BUTTONS/locked_level.png" id="4_42rqe"]
+[ext_resource type="Script" uid="uid://dxg1k1f1jqr5i" path="res://scripts/texture_button.gd" id="5_ujbu7"]
+[ext_resource type="PackedScene" uid="uid://d33k0j7niocuv" path="res://scenes/lock.tscn" id="8_e545p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tuscg"]
 texture = ExtResource("1_gswpo")
@@ -51,21 +57,6 @@ texture = ExtResource("1_gswpo")
 [sub_resource type="TileSet" id="TileSet_42rqe"]
 sources/0 = SubResource("TileSetAtlasSource_tuscg")
 
-[sub_resource type="Animation" id="Animation_rcujv"]
-resource_name = "zoom_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.78),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(3, 3)]
-}
-
 [sub_resource type="Animation" id="Animation_efsdc"]
 length = 0.001
 tracks/0/type = "value"
@@ -81,6 +72,21 @@ tracks/0/keys = {
 "values": [Vector2(0.1, 0.1)]
 }
 
+[sub_resource type="Animation" id="Animation_rcujv"]
+resource_name = "zoom_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.49, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1), Vector2(3, 3)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0rqca"]
 _data = {
 &"RESET": SubResource("Animation_efsdc"),
@@ -88,6 +94,7 @@ _data = {
 }
 
 [node name="Level_Selection" type="Node2D"]
+script = ExtResource("1_0rqca")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(1, 0)
@@ -97,46 +104,129 @@ tile_set = SubResource("TileSet_42rqe")
 [node name="levels" type="Node2D" parent="."]
 position = Vector2(-8, 0)
 
-[node name="Lvl1" type="Label" parent="levels"]
-offset_left = -153.0
-offset_top = -68.0
-offset_right = -99.0
-offset_bottom = -45.0
+[node name="TextureButton" type="TextureButton" parent="levels"]
+offset_left = -143.0
+offset_top = -44.0
+offset_right = -103.0
+offset_bottom = -4.0
+texture_normal = ExtResource("3_tuscg")
+texture_hover = ExtResource("4_2wv3l")
+script = ExtResource("5_ujbu7")
+level_number = 1
+level_scene_path = "\"res://scenes/level_1.tscn\""
+
+[node name="Lvl1" type="Label" parent="levels/TextureButton"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -24.0
+offset_right = 44.0
+offset_bottom = -1.0
 theme_override_fonts/font = ExtResource("2_3rh63")
 text = "Level 1"
 
-[node name="Lvl2" type="Label" parent="levels"]
-offset_left = -64.0
-offset_top = -68.0
-offset_right = -8.0
-offset_bottom = -45.0
+[node name="LockedLevel" type="Sprite2D" parent="levels/TextureButton/Lvl1"]
+position = Vector2(26, 40)
+texture = ExtResource("4_42rqe")
+
+[node name="lock" parent="levels/TextureButton/Lvl1" instance=ExtResource("8_e545p")]
+position = Vector2(26, 39)
+
+[node name="TextureButton2" type="TextureButton" parent="levels"]
+offset_left = -55.0
+offset_top = -44.0
+offset_right = -15.0
+offset_bottom = -4.0
+texture_normal = ExtResource("3_tuscg")
+texture_hover = ExtResource("4_2wv3l")
+
+[node name="Lvl2" type="Label" parent="levels/TextureButton2"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -24.0
+offset_right = 47.0
+offset_bottom = -1.0
 theme_override_fonts/font = ExtResource("2_3rh63")
 text = "Level 2"
 
-[node name="Lvl3" type="Label" parent="levels"]
-offset_left = 30.0
-offset_top = -68.0
-offset_right = 86.0
-offset_bottom = -45.0
+[node name="LockedLevel2" type="Sprite2D" parent="levels/TextureButton2/Lvl2"]
+position = Vector2(25, 40)
+texture = ExtResource("4_42rqe")
+
+[node name="lock2" parent="levels/TextureButton2/Lvl2" instance=ExtResource("8_e545p")]
+position = Vector2(25, 39)
+
+[node name="TextureButton3" type="TextureButton" parent="levels"]
+offset_left = 43.0
+offset_top = -44.0
+offset_right = 83.0
+offset_bottom = -4.0
+texture_normal = ExtResource("3_tuscg")
+texture_hover = ExtResource("4_2wv3l")
+
+[node name="Lvl3" type="Label" parent="levels/TextureButton3"]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -24.0
+offset_right = 43.0
+offset_bottom = -1.0
 theme_override_fonts/font = ExtResource("2_3rh63")
 text = "Level 3"
 
-[node name="Lvl4" type="Label" parent="levels"]
-offset_left = 124.0
-offset_top = -68.0
-offset_right = 181.0
-offset_bottom = -33.0
+[node name="LockedLevel3" type="Sprite2D" parent="levels/TextureButton3/Lvl3"]
+position = Vector2(29, 40)
+texture = ExtResource("4_42rqe")
+
+[node name="lock3" parent="levels/TextureButton3/Lvl3" instance=ExtResource("8_e545p")]
+position = Vector2(29, 39)
+
+[node name="TextureButton4" type="TextureButton" parent="levels"]
+offset_left = 138.0
+offset_top = -44.0
+offset_right = 178.0
+offset_bottom = -4.0
+texture_normal = ExtResource("3_tuscg")
+texture_hover = ExtResource("4_2wv3l")
+
+[node name="Lvl4" type="Label" parent="levels/TextureButton4"]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -24.0
+offset_right = 43.0
+offset_bottom = 11.0
 theme_override_fonts/font = ExtResource("2_3rh63")
 text = "Level 4
 "
 
-[node name="Lvl5" type="Label" parent="levels"]
-offset_left = -153.0
-offset_top = 12.0
-offset_right = -95.0
-offset_bottom = 28.0
+[node name="LockedLevel4" type="Sprite2D" parent="levels/TextureButton4/Lvl4"]
+position = Vector2(30, 40)
+texture = ExtResource("4_42rqe")
+
+[node name="lock4" parent="levels/TextureButton4/Lvl4" instance=ExtResource("8_e545p")]
+position = Vector2(30, 39)
+
+[node name="TextureButton5" type="TextureButton" parent="levels"]
+offset_left = -143.0
+offset_top = 35.0
+offset_right = -103.0
+offset_bottom = 75.0
+texture_normal = ExtResource("3_tuscg")
+texture_hover = ExtResource("4_2wv3l")
+
+[node name="Lvl5" type="Label" parent="levels/TextureButton5"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -23.0
+offset_right = 48.0
+offset_bottom = -7.0
 theme_override_fonts/font = ExtResource("2_3rh63")
 text = "Level 5"
+
+[node name="LockedLevel5" type="Sprite2D" parent="levels/TextureButton5/Lvl5"]
+position = Vector2(26, 39)
+texture = ExtResource("4_42rqe")
+
+[node name="lock5" parent="levels/TextureButton5/Lvl5" instance=ExtResource("8_e545p")]
+position = Vector2(26, 38)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.1, 0.1)
@@ -145,3 +235,5 @@ zoom = Vector2(0.1, 0.1)
 libraries = {
 &"": SubResource("AnimationLibrary_0rqca")
 }
+
+[connection signal="pressed" from="levels/TextureButton" to="levels/TextureButton" method="_on_pressed"]

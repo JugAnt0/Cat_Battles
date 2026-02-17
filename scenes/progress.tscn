@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://it6waycq3ays"]
+
+[ext_resource type="Script" uid="uid://dblo55tgxewse" path="res://scripts/progress.gd" id="1_f1jb4"]
+
+[node name="Progress" type="Node"]
+script = ExtResource("1_f1jb4")
