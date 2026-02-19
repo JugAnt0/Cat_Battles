@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://px6nkudwypln"]
+[gd_scene load_steps=15 format=4 uid="uid://px6nkudwypln"]
 
 [ext_resource type="Script" uid="uid://7ecomghdh14r" path="res://scripts/level_selection.gd" id="1_0rqca"]
 [ext_resource type="Texture2D" uid="uid://bheejfcror6km" path="res://sprites/sprites/sprites/paka's petting sim/ground.png" id="1_gswpo"]
@@ -87,9 +87,25 @@ tracks/0/keys = {
 "values": [Vector2(0.1, 0.1), Vector2(1, 1), Vector2(3, 3)]
 }
 
+[sub_resource type="Animation" id="Animation_0rqca"]
+resource_name = "zoom out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.51, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0rqca"]
 _data = {
 &"RESET": SubResource("Animation_efsdc"),
+&"zoom out": SubResource("Animation_0rqca"),
 &"zoom_in": SubResource("Animation_rcujv")
 }
 
@@ -113,7 +129,7 @@ texture_normal = ExtResource("3_tuscg")
 texture_hover = ExtResource("4_2wv3l")
 script = ExtResource("5_ujbu7")
 level_number = 1
-level_scene_path = "\"res://scenes/level_1.tscn\""
+level_scene_path = "res://scenes/level_1.tscn"
 
 [node name="Lvl1" type="Label" parent="levels/TextureButton"]
 layout_mode = 0
@@ -124,12 +140,12 @@ offset_bottom = -1.0
 theme_override_fonts/font = ExtResource("2_3rh63")
 text = "Level 1"
 
-[node name="LockedLevel" type="Sprite2D" parent="levels/TextureButton/Lvl1"]
-position = Vector2(26, 40)
+[node name="LockedLevel" type="Sprite2D" parent="levels/TextureButton"]
+position = Vector2(16, 16)
 texture = ExtResource("4_42rqe")
 
-[node name="lock" parent="levels/TextureButton/Lvl1" instance=ExtResource("8_e545p")]
-position = Vector2(26, 39)
+[node name="lock" parent="levels/TextureButton" instance=ExtResource("8_e545p")]
+position = Vector2(16, 15)
 
 [node name="TextureButton2" type="TextureButton" parent="levels"]
 offset_left = -55.0
@@ -148,12 +164,12 @@ offset_bottom = -1.0
 theme_override_fonts/font = ExtResource("2_3rh63")
 text = "Level 2"
 
-[node name="LockedLevel2" type="Sprite2D" parent="levels/TextureButton2/Lvl2"]
-position = Vector2(25, 40)
+[node name="LockedLevel2" type="Sprite2D" parent="levels/TextureButton2"]
+position = Vector2(16, 16)
 texture = ExtResource("4_42rqe")
 
-[node name="lock2" parent="levels/TextureButton2/Lvl2" instance=ExtResource("8_e545p")]
-position = Vector2(25, 39)
+[node name="lock2" parent="levels/TextureButton2" instance=ExtResource("8_e545p")]
+position = Vector2(16, 15)
 
 [node name="TextureButton3" type="TextureButton" parent="levels"]
 offset_left = 43.0
@@ -172,12 +188,12 @@ offset_bottom = -1.0
 theme_override_fonts/font = ExtResource("2_3rh63")
 text = "Level 3"
 
-[node name="LockedLevel3" type="Sprite2D" parent="levels/TextureButton3/Lvl3"]
-position = Vector2(29, 40)
+[node name="LockedLevel3" type="Sprite2D" parent="levels/TextureButton3"]
+position = Vector2(16, 16)
 texture = ExtResource("4_42rqe")
 
-[node name="lock3" parent="levels/TextureButton3/Lvl3" instance=ExtResource("8_e545p")]
-position = Vector2(29, 39)
+[node name="lock3" parent="levels/TextureButton3" instance=ExtResource("8_e545p")]
+position = Vector2(16, 15)
 
 [node name="TextureButton4" type="TextureButton" parent="levels"]
 offset_left = 138.0
@@ -197,12 +213,12 @@ theme_override_fonts/font = ExtResource("2_3rh63")
 text = "Level 4
 "
 
-[node name="LockedLevel4" type="Sprite2D" parent="levels/TextureButton4/Lvl4"]
-position = Vector2(30, 40)
+[node name="LockedLevel4" type="Sprite2D" parent="levels/TextureButton4"]
+position = Vector2(16, 16)
 texture = ExtResource("4_42rqe")
 
-[node name="lock4" parent="levels/TextureButton4/Lvl4" instance=ExtResource("8_e545p")]
-position = Vector2(30, 39)
+[node name="lock4" parent="levels/TextureButton4" instance=ExtResource("8_e545p")]
+position = Vector2(16, 15)
 
 [node name="TextureButton5" type="TextureButton" parent="levels"]
 offset_left = -143.0
@@ -221,12 +237,12 @@ offset_bottom = -7.0
 theme_override_fonts/font = ExtResource("2_3rh63")
 text = "Level 5"
 
-[node name="LockedLevel5" type="Sprite2D" parent="levels/TextureButton5/Lvl5"]
-position = Vector2(26, 39)
+[node name="LockedLevel5" type="Sprite2D" parent="levels/TextureButton5"]
+position = Vector2(16, 16)
 texture = ExtResource("4_42rqe")
 
-[node name="lock5" parent="levels/TextureButton5/Lvl5" instance=ExtResource("8_e545p")]
-position = Vector2(26, 38)
+[node name="lock5" parent="levels/TextureButton5" instance=ExtResource("8_e545p")]
+position = Vector2(16, 15)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.1, 0.1)
@@ -236,4 +252,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_0rqca")
 }
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="pressed" from="levels/TextureButton" to="levels/TextureButton" method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="levels/TextureButton" method="_on_timer_timeout"]
