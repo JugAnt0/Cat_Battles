@@ -1,26 +1,10 @@
+# res://scripts/Progress.gd
 extends Node
 
+var level1completed = false
+var level2completed = false
+var level3completed = false
+var level4completed = false
+var level5completed = false
 
-var unlocked_level:int = 1
-const SAVE_PATH:String = "user://progress.save"
-
-
-
-
-
-func save() -> void:
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file:
-		file.store_var(unlocked_level)
-
-
-func load_progress() -> void:
-	if FileAccess.file_exists(SAVE_PATH):
-		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-		if file:
-			unlocked_level = file.get_var()
-			
-
-
-func _ready():
-	load_progress()
+		

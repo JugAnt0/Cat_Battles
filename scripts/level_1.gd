@@ -4,28 +4,19 @@ extends Node2D
 @onready var death_timer: Timer = $kill_zone/Death_Timer
 @onready var camera: Camera2D = $Panda/Camera
 
-@export var level_number:int = 1
 @onready var player: AnimationPlayer = $Panda/Camera/AnimationPlayer
 
 func _ready() -> void:
 	player.play("zoom_in")
 	
-func unlock_next_level():
-	if Progress.unlocked_level < level_number + 1:
-		Progress.unlocked_level = level_number + 1
-		Progress.save()
 
-func _on_level_completed():
-	if Progress.unlocked_level <= level_number:
-		Progress.unlocked_level = level_number + 1
-		Progress.save()
 
 
 func _on_flag_body_entered(body: Node2D) -> void:
 	if body == panda:
-		unlock_next_level()
-		player.play("zoom_out")
 		timer.start()
+		player.play("zoom_out")
+		Progress.level1completed = true
 
 
 
@@ -42,3 +33,5 @@ func _on_kill_zone_body_entered(body: Node2D) -> void:
 
 func _on_death_timer_timeout() -> void:
 	get_tree().reload_current_scene()
+
+# LevelX.gd (attached to your level root Node2D)

@@ -17,7 +17,7 @@ var player_inside := false
 
 func _ready() -> void:
 	player.play("zoom_in")
-	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
