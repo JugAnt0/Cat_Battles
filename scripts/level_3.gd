@@ -1,9 +1,12 @@
 extends Node2D
-@onready var timer: Timer = $Timer
-@onready var panda: CharacterBody2D = $Panda
-
-@export var level_number:int = 2
 @onready var player: AnimationPlayer = $Panda/Camera/AnimationPlayer
+@onready var panda: CharacterBody2D = $Panda
+@onready var timer: Timer = $Timer
+
+
+
+@export var level_number:int = 1
+
 
 func _ready() -> void:
 	player.play("zoom_in")
@@ -24,7 +27,3 @@ func _on_flag_body_entered(body: Node2D) -> void:
 		unlock_next_level()
 		player.play("zoom_out")
 		timer.start()
-
-
-func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://scenes/level_3.tscn")
