@@ -17,7 +17,7 @@ var player_inside := false
 
 func _ready() -> void:
 	player.play("zoom_in")
-
+	Ui.l.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,7 +38,7 @@ func _on_skin_selection_pressed() -> void:
 func _on_timer_timeout() -> void:
 	if bt == "level_selector":
 		get_tree().change_scene_to_file("res://scenes/level_selection.tscn")
-
+	
 
 func _on_red_house_body_entered(body: Node2D) -> void:
 	if body == panda:

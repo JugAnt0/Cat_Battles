@@ -248,7 +248,7 @@ libraries = {
 [connection signal="pressed" from="levels/TextureButton2" to="." method="_on_texture_button_2_pressed"]
 [connection signal="pressed" from="levels/TextureButton3" to="." method="_on_texture_button_3_pressed"]
 [connection signal="pressed" from="levels/TextureButton4" to="." method="_on_texture_button_4_pressed"]
-[connection signal="timeout" from="Timer" to="levels/TextureButton" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="levels/TextureButton2/lock"]
 [editable path="levels/TextureButton3/lock"]
