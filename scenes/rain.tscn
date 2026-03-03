@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=3 uid="uid://itpy1750u1qu"]
+
+[ext_resource type="Script" uid="uid://cvww1wu78qycf" path="res://scripts/rain.gd" id="1_5mvay"]
+[ext_resource type="Texture2D" uid="uid://c74rrjbydkn4p" path="res://sprites/sprites/sprites/paka's petting sim/gota-Sheet.png" id="2_rru6j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8tiy"]
+atlas = ExtResource("2_rru6j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5duj6"]
+atlas = ExtResource("2_rru6j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypopp"]
+atlas = ExtResource("2_rru6j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bqv2"]
+atlas = ExtResource("2_rru6j")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q17u"]
+atlas = ExtResource("2_rru6j")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wealb"]
+atlas = ExtResource("2_rru6j")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfcrv"]
+atlas = ExtResource("2_rru6j")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p12ek"]
+atlas = ExtResource("2_rru6j")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvo7r"]
+atlas = ExtResource("2_rru6j")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a6yge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8tiy")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5duj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypopp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bqv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q17u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wealb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfcrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p12ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvo7r")
+}],
+"loop": false,
+"name": &"fell",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i15lu"]
+radius = 6.0
+
+[node name="rain" type="Area2D"]
+script = ExtResource("1_5mvay")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a6yge")
+animation = &"fell"
+
+[node name="AnimTimer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_i15lu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="AnimTimer" to="." method="_on_anim_timer_timeout"]

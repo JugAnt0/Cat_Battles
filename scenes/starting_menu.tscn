@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bsdakb76wd1x2"]
+[gd_scene load_steps=16 format=4 uid="uid://bsdakb76wd1x2"]
 
 [ext_resource type="Script" uid="uid://16wdiw1oo131" path="res://scripts/starting_menu.gd" id="1_cxv6e"]
 [ext_resource type="Texture2D" uid="uid://bheejfcror6km" path="res://sprites/sprites/sprites/paka's petting sim/ground.png" id="2_uynpn"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cqicxjqwgu4eb" path="res://sprites/sprites/sprites/BUTTONS/Exit1.png" id="6_4fe80"]
 [ext_resource type="Texture2D" uid="uid://doprxsf5wc0p7" path="res://sprites/sprites/sprites/BUTTONS/Exit2.png" id="7_omm7k"]
 [ext_resource type="PackedScene" uid="uid://brcr4x2kc12c7" path="res://scenes/snow.tscn" id="8_7v0ru"]
+[ext_resource type="Texture2D" uid="uid://dbmcdjeflen0y" path="res://sprites/sprites/Black cat display.png" id="9_tu32s"]
+[ext_resource type="PackedScene" uid="uid://cxdo380skefxn" path="res://scenes/cloud.tscn" id="10_aetgi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hoeeq"]
 texture = ExtResource("2_uynpn")
@@ -128,14 +130,15 @@ theme_override_fonts/font = ExtResource("3_3td01")
 text = "Panda's Domain"
 
 [node name="StartGame" type="TextureButton" parent="text_and_buttons"]
-offset_left = -71.0
-offset_right = -7.0
+offset_left = -85.0
+offset_right = -21.0
 offset_bottom = 16.0
 texture_normal = ExtResource("4_tu32s")
 texture_hover = ExtResource("5_aetgi")
 
 [node name="Exit" type="TextureButton" parent="text_and_buttons"]
-offset_right = 64.0
+offset_left = 11.0
+offset_right = 75.0
 offset_bottom = 16.0
 texture_normal = ExtResource("6_4fe80")
 texture_hover = ExtResource("7_omm7k")
@@ -144,6 +147,22 @@ texture_hover = ExtResource("7_omm7k")
 position = Vector2(80, -2)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="BlackCatDisplay" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+texture = ExtResource("9_tu32s")
+
+[node name="cloud" parent="." instance=ExtResource("10_aetgi")]
+position = Vector2(77, -49)
+
+[node name="cloud2" parent="." instance=ExtResource("10_aetgi")]
+position = Vector2(-73, -56)
+
+[node name="cloud3" parent="." instance=ExtResource("10_aetgi")]
+position = Vector2(93, 19)
+
+[node name="cloud4" parent="." instance=ExtResource("10_aetgi")]
+position = Vector2(-93, 46)
 
 [connection signal="pressed" from="text_and_buttons/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="text_and_buttons/Exit" to="." method="_on_exit_pressed"]
