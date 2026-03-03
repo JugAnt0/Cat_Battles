@@ -12,6 +12,12 @@ extends Node2D
 @onready var locked_level_6: Sprite2D = $levels/TextureButton6/LockedLevel6
 @onready var lock6: Node2D = $levels/TextureButton6/lock
 @onready var lock6_anim: AnimationPlayer = $levels/TextureButton6/lock/Sprite2D/AnimationPlayer
+@onready var locked_level_7: Sprite2D = $levels/TextureButton7/LockedLevel7
+@onready var lock7: Node2D = $levels/TextureButton7/lock
+@onready var lock7_anim: AnimationPlayer = $levels/TextureButton7/lock/Sprite2D/AnimationPlayer
+@onready var locked_level_8: Sprite2D = $levels/TextureButton8/LockedLevel8
+@onready var lock8: Node2D = $levels/TextureButton8/lock
+@onready var lock8_anim: AnimationPlayer = $levels/TextureButton8/lock/Sprite2D/AnimationPlayer
 
 
 var bt = ""
@@ -53,6 +59,20 @@ func _ready() -> void:
 	if Progress.level5completed ==true:
 		lock6.visible = false
 		locked_level_6.visible= false
+	if Progress.level6completed ==false:
+		lock7.visible = true
+		locked_level_7.visible= true
+	if Progress.level6completed ==true:
+		lock7.visible = false
+		locked_level_7.visible= false
+	if Progress.level7completed ==false:
+		lock8.visible = true
+		locked_level_8.visible= true
+	if Progress.level7completed ==true:
+		lock8.visible = false
+		locked_level_8.visible= false
+		
+		
 		
 		
 func _on_texture_button_pressed() -> void:
@@ -106,6 +126,10 @@ func _on_timer_timeout() -> void:
 		get_tree().change_scene_to_file("res://scenes/level_5.tscn")
 	elif bt == "6":
 		get_tree().change_scene_to_file("res://scenes/level_6.tscn")
+	elif bt == "7":
+		get_tree().change_scene_to_file("res://scenes/level_7.tscn")
+	elif bt == "8":
+		get_tree().change_scene_to_file("res://scenes/level_8.tscn")
 
 
 func _on_texture_button_5_pressed() -> void:
@@ -122,5 +146,23 @@ func _on_texture_button_6_pressed() -> void:
 		lock6_anim.play("locked")
 	if Progress.level5completed == true:
 		bt = "6"
+		player.play("zoom out")
+		timer.start()
+
+
+func _on_texture_button_7_pressed() -> void:
+	if Progress.level6completed == false:
+		lock7_anim.play("locked")
+	if Progress.level6completed == true:
+		bt = "7"
+		player.play("zoom out")
+		timer.start()
+
+
+func _on_texture_button_8_pressed() -> void:
+	if Progress.level7completed == false:
+		lock8_anim.play("locked")
+	if Progress.level7completed == true:
+		bt = "8"
 		player.play("zoom out")
 		timer.start()

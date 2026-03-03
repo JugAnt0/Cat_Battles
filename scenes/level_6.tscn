@@ -64,6 +64,7 @@ texture = ExtResource("1_ku6r7")
 
 [sub_resource type="TileSet" id="TileSet_isi3j"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_fidgd")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hi6ks"]
@@ -156,43 +157,6 @@ position = Vector2(35, -1061)
 
 [node name="rain43" parent="raindrops" instance=ExtResource("4_uwnnm")]
 position = Vector2(1161, -1810)
-
-[node name="rain43" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-281, -109)
-
-[node name="rain47" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-644, -67)
-
-[node name="rain49" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-1324, -118)
-
-[node name="rain50" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-1324, -118)
-
-[node name="rain12" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-304, 413)
-
-[node name="rain20" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-917, 168)
-
-[node name="rain30" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-1154, 227)
-
-[node name="rain32" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-1154, 227)
-
-[node name="rain33" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-1554, 199)
-
-[node name="rain34" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-1554, 199)
-
-[node name="rain16" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-47, 245)
-
-[node name="rain17" parent="raindrops/rain43" instance=ExtResource("4_uwnnm")]
-position = Vector2(-484.00012, 185.00024)
-rotation = -0.022910118
 
 [node name="rain44" parent="raindrops" instance=ExtResource("4_uwnnm")]
 position = Vector2(982, -3381)
@@ -380,6 +344,44 @@ position = Vector2(-271.6018, -2411.4268)
 rotation = -0.045820236
 scale = Vector2(0.99999994, 0.99999994)
 
+[node name="rain60" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(880, -1919)
+
+[node name="rain61" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(517, -1877)
+
+[node name="rain62" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(-163, -1928)
+
+[node name="rain63" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(-163, -1928)
+
+[node name="rain64" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(857, -1397)
+
+[node name="rain65" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(244, -1642)
+
+[node name="rain66" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(7, -1583)
+
+[node name="rain67" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(7, -1583)
+
+[node name="rain68" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(-393, -1611)
+
+[node name="rain69" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(-393, -1611)
+
+[node name="rain70" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(1114, -1565)
+
+[node name="rain71" parent="raindrops" instance=ExtResource("4_uwnnm")]
+position = Vector2(676.9999, -1624.9998)
+rotation = -0.022910118
+scale = Vector2(0.99999994, 0.99999994)
+
 [node name="kill_zone" type="Area2D" parent="."]
 position = Vector2(235, 82)
 
@@ -416,6 +418,7 @@ position = Vector2(1274, -188)
 [node name="snow3" parent="snows" instance=ExtResource("7_uwnnm")]
 position = Vector2(-126, -191)
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="kill_zone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="timeout" from="kill_zone/Death_Timer" to="." method="_on_death_timer_timeout"]
 [connection signal="body_entered" from="Flag" to="." method="_on_flag_body_entered"]

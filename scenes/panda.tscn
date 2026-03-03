@@ -158,9 +158,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gam3p"]
-size = Vector2(26, 17)
+size = Vector2(20, 8.5)
 
 [node name="Panda" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_xyeg1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -170,4 +171,5 @@ animation = &"run"
 autoplay = "sit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.25)
 shape = SubResource("RectangleShape2D_gam3p")

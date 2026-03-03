@@ -1,13 +1,13 @@
 extends Area2D
 @onready var panda: CharacterBody2D = %Panda
 @onready var camera: Camera2D = %Camera
-@onready var player: AnimationPlayer = $"../../Panda/Camera/AnimationPlayer"
 @onready var anim_timer: Timer = $AnimTimer
 var speed := 100.0
 @onready var rain: Area2D = $"."
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var col: CollisionShape2D = $CollisionShape2D
 @onready var death_timer: Timer = %Death_Timer
+@onready var player: AnimationPlayer = $"../../Panda/Camera/AnimationPlayer"
 
 var velocity = Vector2.ZERO
 
