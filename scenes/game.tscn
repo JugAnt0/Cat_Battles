@@ -606,20 +606,20 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("11_trtic")
 text = "Levels"
 
-[node name="Area2D" type="Area2D" parent="Buttons"]
+[node name="yellow_house" type="Area2D" parent="Buttons"]
 
-[node name="skin_selection" type="TextureButton" parent="Buttons/Area2D"]
+[node name="skin_selection" type="TextureButton" parent="Buttons/yellow_house"]
 offset_left = 149.0
 offset_top = -80.0
 offset_right = 229.0
 texture_normal = ExtResource("11_kvuet")
 texture_hover = ExtResource("12_trtic")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/yellow_house"]
 position = Vector2(189, -21)
 shape = SubResource("RectangleShape2D_rysoc")
 
-[node name="Label" type="Label" parent="Buttons/Area2D"]
+[node name="Label" type="Label" parent="Buttons/yellow_house"]
 offset_left = 172.0
 offset_top = -81.0
 offset_right = 212.0
@@ -627,7 +627,7 @@ offset_bottom = -65.0
 theme_override_fonts/font = ExtResource("11_trtic")
 text = "skins"
 
-[node name="Label2" type="Label" parent="Buttons/Area2D"]
+[node name="Label2" type="Label" parent="Buttons/yellow_house"]
 offset_left = 172.0
 offset_top = -80.0
 offset_right = 212.0
@@ -641,5 +641,7 @@ text = "skins"
 [connection signal="body_entered" from="Buttons/red_house" to="." method="_on_red_house_body_entered"]
 [connection signal="body_exited" from="Buttons/red_house" to="." method="_on_red_house_body_exited"]
 [connection signal="pressed" from="Buttons/red_house/level_selection" to="." method="_on_level_selection_pressed"]
-[connection signal="pressed" from="Buttons/Area2D/skin_selection" to="." method="_on_skin_selection_pressed"]
+[connection signal="body_entered" from="Buttons/yellow_house" to="." method="_on_yellow_house_body_entered"]
+[connection signal="body_exited" from="Buttons/yellow_house" to="." method="_on_yellow_house_body_exited"]
+[connection signal="pressed" from="Buttons/yellow_house/skin_selection" to="." method="_on_skin_selection_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

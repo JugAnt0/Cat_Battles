@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Progress="*res://scenes/progress.tscn"
 Ui="*res://scenes/ui.tscn"
+Skins="*res://scenes/skins.tscn"
 
 [editor_plugins]
 

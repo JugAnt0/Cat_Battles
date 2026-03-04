@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwrnb1xj3iy5t"]
+
+[ext_resource type="Script" uid="uid://ukvyndalkgnn" path="res://scripts/skins.gd" id="1_53ngs"]
+
+[node name="skins" type="Node"]
+script = ExtResource("1_53ngs")

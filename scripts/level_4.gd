@@ -21,7 +21,7 @@ func _on_kill_zone_body_entered(body: Node2D) -> void:
 		player.play("zoom_out")
 		death_timer.start()
 		body.get_node("CollisionShape2D").queue_free()
-
+	
 func _on_death_timer_timeout() -> void:
 	get_tree().reload_current_scene()
 	
