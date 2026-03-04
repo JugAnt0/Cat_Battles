@@ -18,6 +18,9 @@ extends Node2D
 @onready var locked_level_8: Sprite2D = $levels/TextureButton8/LockedLevel8
 @onready var lock8: Node2D = $levels/TextureButton8/lock
 @onready var lock8_anim: AnimationPlayer = $levels/TextureButton8/lock/Sprite2D/AnimationPlayer
+@onready var locked_level_9: Sprite2D = $levels/TextureButton9/LockedLevel9
+@onready var lock9: Node2D = $levels/TextureButton9/lock
+@onready var lock9_anim: AnimationPlayer = $levels/TextureButton9/lock/Sprite2D/AnimationPlayer
 
 
 var bt = ""
@@ -71,6 +74,13 @@ func _ready() -> void:
 	if Progress.level7completed ==true:
 		lock8.visible = false
 		locked_level_8.visible= false
+	if Progress.level8completed ==false:
+		lock9.visible = true
+		locked_level_9.visible= true
+	if Progress.level8completed ==true:
+		lock9.visible = false
+		locked_level_9.visible= false
+		
 		
 		
 		
@@ -130,6 +140,8 @@ func _on_timer_timeout() -> void:
 		get_tree().change_scene_to_file("res://scenes/level_7.tscn")
 	elif bt == "8":
 		get_tree().change_scene_to_file("res://scenes/level_8.tscn")
+	elif bt == "9":
+		get_tree().change_scene_to_file("res://scenes/level_8.tscn")
 
 
 func _on_texture_button_5_pressed() -> void:
@@ -164,5 +176,14 @@ func _on_texture_button_8_pressed() -> void:
 		lock8_anim.play("locked")
 	if Progress.level7completed == true:
 		bt = "8"
+		player.play("zoom out")
+		timer.start()
+
+
+func _on_texture_button_9_pressed() -> void:
+	if Progress.level8completed == false:
+		lock9_anim.play("locked")
+	if Progress.level8completed == true:
+		bt = "9"
 		player.play("zoom out")
 		timer.start()

@@ -305,6 +305,30 @@ texture = ExtResource("4_42rqe")
 [node name="lock" parent="levels/TextureButton8" instance=ExtResource("8_e545p")]
 position = Vector2(16, 15)
 
+[node name="TextureButton9" type="TextureButton" parent="levels"]
+offset_left = 138.0
+offset_top = 35.0
+offset_right = 178.0
+offset_bottom = 75.0
+texture_normal = ExtResource("3_tuscg")
+texture_hover = ExtResource("4_2wv3l")
+
+[node name="Lvl5" type="Label" parent="levels/TextureButton9"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -23.0
+offset_right = 48.0
+offset_bottom = -7.0
+theme_override_fonts/font = ExtResource("2_3rh63")
+text = "Level 8"
+
+[node name="LockedLevel9" type="Sprite2D" parent="levels/TextureButton9"]
+position = Vector2(16, 16)
+texture = ExtResource("4_42rqe")
+
+[node name="lock" parent="levels/TextureButton9" instance=ExtResource("8_e545p")]
+position = Vector2(16, 15)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.1, 0.1)
 
@@ -324,6 +348,7 @@ libraries = {
 [connection signal="pressed" from="levels/TextureButton6" to="." method="_on_texture_button_6_pressed"]
 [connection signal="pressed" from="levels/TextureButton7" to="." method="_on_texture_button_7_pressed"]
 [connection signal="pressed" from="levels/TextureButton8" to="." method="_on_texture_button_8_pressed"]
+[connection signal="pressed" from="levels/TextureButton9" to="." method="_on_texture_button_9_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="levels/TextureButton2/lock"]
@@ -332,3 +357,4 @@ libraries = {
 [editable path="levels/TextureButton6/lock"]
 [editable path="levels/TextureButton7/lock"]
 [editable path="levels/TextureButton8/lock"]
+[editable path="levels/TextureButton9/lock"]
