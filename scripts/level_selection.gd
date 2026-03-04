@@ -1,4 +1,3 @@
-# LevelSelection.gd (root Node2D of level select scene)
 extends Node2D
 @onready var lock2: Node2D = $levels/TextureButton2/lock
 @onready var locked_level_2: Sprite2D = $levels/TextureButton2/LockedLevel2
@@ -21,6 +20,9 @@ extends Node2D
 @onready var locked_level_9: Sprite2D = $levels/TextureButton9/LockedLevel9
 @onready var lock9: Node2D = $levels/TextureButton9/lock
 @onready var lock9_anim: AnimationPlayer = $levels/TextureButton9/lock/Sprite2D/AnimationPlayer
+@onready var locked_level_10: Sprite2D = $levels/TextureButton10/LockedLevel10
+@onready var lock10: Node2D = $levels/TextureButton10/lock
+@onready var lock10_anim: AnimationPlayer = $levels/TextureButton10/lock/Sprite2D/AnimationPlayer
 
 
 var bt = ""
@@ -80,6 +82,12 @@ func _ready() -> void:
 	if Progress.level8completed ==true:
 		lock9.visible = false
 		locked_level_9.visible= false
+	if Progress.level9completed ==false:
+		lock10.visible = true
+		locked_level_10.visible= true
+	if Progress.level9completed ==true:
+		lock10.visible = false
+		locked_level_10.visible= false
 		
 		
 		
@@ -141,8 +149,9 @@ func _on_timer_timeout() -> void:
 	elif bt == "8":
 		get_tree().change_scene_to_file("res://scenes/level_8.tscn")
 	elif bt == "9":
-		get_tree().change_scene_to_file("res://scenes/level_8.tscn")
-
+		get_tree().change_scene_to_file("res://scenes/level_9.tscn")
+	elif bt == "10":
+		get_tree().change_scene_to_file("res://scenes/level_10.tscn")
 
 func _on_texture_button_5_pressed() -> void:
 	if Progress.level4completed == false:
@@ -185,5 +194,14 @@ func _on_texture_button_9_pressed() -> void:
 		lock9_anim.play("locked")
 	if Progress.level8completed == true:
 		bt = "9"
+		player.play("zoom out")
+		timer.start()
+
+
+func _on_texture_button_10_pressed() -> void:
+	if Progress.level9completed == false:
+		lock10_anim.play("locked")
+	if Progress.level9completed == true:
+		bt = "10"
 		player.play("zoom out")
 		timer.start()

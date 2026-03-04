@@ -9,6 +9,11 @@ extends Node2D
 @onready var level_selection: TextureButton = $Buttons/red_house/level_selection
 @export var house_normal = preload("uid://daqin0thnm776")
 @export var house_hover = preload("uid://djhbbe42xxupi")
+@onready var t1: TileMapLayer = $TileMapLayer3
+@onready var t2: TileMapLayer = $TileMapLayer
+@onready var t3: TileMapLayer = $TileMapLayer5
+@onready var t4: TileMapLayer = $TileMapLayer4
+@onready var snows: Node2D = $snows
 
 
 var bt = ""
@@ -18,13 +23,17 @@ var player_inside := false
 func _ready() -> void:
 	player.play("zoom_in")
 	Ui.l.hide()
-
-
+	if Progress.level5completed == true:
+		t1.show()
+		t2.show()
+		t3.hide()
+		t4.hide()
+		snows.show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_inside and Input.is_action_just_pressed("jump"):
 		_on_level_selection_pressed()
-
+	
 
 func _on_level_selection_pressed() -> void:
 	bt = "level_selector"

@@ -5,15 +5,15 @@ extends Node2D
 @onready var death_timer: Timer = $kill_zone/Death_Timer
 
 func _ready() -> void:
-	player.play("zoom_in")
-	print("Level started")
+	player.play("zoom_in_last")
+	
 
 
 func _on_flag_body_entered(body: Node2D) -> void:
 	if body == panda:
 		timer.start()
 		player.play("zoom_out")
-		Progress.level9completed = true
+		Progress.level10completed = true
 		
 func _on_kill_zone_body_entered(body: Node2D) -> void:
 	if body == panda:
@@ -26,9 +26,4 @@ func _on_death_timer_timeout() -> void:
 
 
 func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://scenes/level_10.tscn")
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == panda:
-		print("Wait until it stops raining to jump to the moving cloud")
+	get_tree().change_scene_to_file("res://scenes/end.tscn")

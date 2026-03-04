@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://dbsymk8smgpup"]
+[gd_scene load_steps=21 format=4 uid="uid://dbsymk8smgpup"]
 
 [ext_resource type="Script" uid="uid://d3d23kfvcw15d" path="res://scripts/level_2.gd" id="1_3bmlt"]
 [ext_resource type="PackedScene" uid="uid://d113bwenjrw2x" path="res://scenes/panda.tscn" id="2_eqxsl"]
 [ext_resource type="PackedScene" uid="uid://ss2le1jebr8a" path="res://scenes/camera.tscn" id="3_b4j7a"]
 [ext_resource type="Texture2D" uid="uid://bheejfcror6km" path="res://sprites/sprites/sprites/paka's petting sim/ground.png" id="4_wo48x"]
 [ext_resource type="Texture2D" uid="uid://bk3ist4e50tuw" path="res://sprites/sprites/sprites/BUTTONS/Flag_Sheet.png" id="5_b4j7a"]
+[ext_resource type="Texture2D" uid="uid://dwqmjb8x7exwq" path="res://sprites/sprites/sprites/paka's petting sim/signs.png" id="6_wo48x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6cvei"]
 texture = ExtResource("4_wo48x")
@@ -206,6 +207,12 @@ position = Vector2(0, 105)
 shape = SubResource("WorldBoundaryShape2D_b4j7a")
 
 [node name="Death_Timer" type="Timer" parent="kill_zone"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(29, 24.5)
+texture = ExtResource("6_wo48x")
+region_enabled = true
+region_rect = Rect2(33, 17, 14, 15)
 
 [connection signal="body_entered" from="Flag" to="." method="_on_flag_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

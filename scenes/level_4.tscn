@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://5j2erf8y8qqv"]
+[gd_scene load_steps=23 format=4 uid="uid://5j2erf8y8qqv"]
 
 [ext_resource type="PackedScene" uid="uid://d113bwenjrw2x" path="res://scenes/panda.tscn" id="1_rbbjd"]
 [ext_resource type="Script" uid="uid://dwtae0v0c62qy" path="res://scripts/level_4.gd" id="1_ycko3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxdo380skefxn" path="res://scenes/cloud.tscn" id="3_ycko3"]
 [ext_resource type="Texture2D" uid="uid://bheejfcror6km" path="res://sprites/sprites/sprites/paka's petting sim/ground.png" id="4_x7blo"]
 [ext_resource type="Texture2D" uid="uid://bk3ist4e50tuw" path="res://sprites/sprites/sprites/BUTTONS/Flag_Sheet.png" id="6_x7blo"]
+[ext_resource type="Texture2D" uid="uid://dwqmjb8x7exwq" path="res://sprites/sprites/sprites/paka's petting sim/signs.png" id="7_x7blo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycko3"]
 texture = ExtResource("4_x7blo")
@@ -1454,6 +1455,12 @@ shape = SubResource("RectangleShape2D_yk4f3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boundary2"]
 position = Vector2(-560, -273)
 shape = SubResource("RectangleShape2D_yk4f3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(33, 40.5)
+texture = ExtResource("7_x7blo")
+region_enabled = true
+region_rect = Rect2(1, 1, 14, 15)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="kill_zone" to="." method="_on_kill_zone_body_entered"]
