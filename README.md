@@ -1,2 +1,3 @@
-Cat-battler
-A cat battler game made in Godot
+# Paka's Domain
+
+Paka's domain is a platformer game
