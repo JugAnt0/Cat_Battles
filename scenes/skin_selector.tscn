@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cy20kwempsfcf"]
+[gd_scene load_steps=19 format=4 uid="uid://cy20kwempsfcf"]
 
 [ext_resource type="Script" uid="uid://buacpve3acis7" path="res://scripts/skin_selector.gd" id="1_ydgih"]
 [ext_resource type="Texture2D" uid="uid://bheejfcror6km" path="res://sprites/sprites/sprites/paka's petting sim/ground.png" id="2_clc5p"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://657jvj2cbrv7" path="res://sprites/sprites/sprites/BUTTONS/Black n white Cat display Hover.png" id="8_aybgu"]
 [ext_resource type="Texture2D" uid="uid://bqohug3lat2j" path="res://sprites/sprites/sprites/BUTTONS/Siamese Cat display.png" id="9_3lac4"]
 [ext_resource type="Texture2D" uid="uid://dtic32pk4cy47" path="res://sprites/sprites/sprites/BUTTONS/Siamese Cat display Hover.png" id="10_w6kbb"]
+[ext_resource type="FontFile" uid="uid://cpj4vdfgcbvqi" path="res://sprites/sprites/sprites/BUTTONS/Minecraft.ttf" id="11_vm4ls"]
+[ext_resource type="PackedScene" uid="uid://brcr4x2kc12c7" path="res://scenes/snow.tscn" id="12_2ecnp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53f0d"]
 texture = ExtResource("2_clc5p")
@@ -59,21 +61,6 @@ texture = ExtResource("2_clc5p")
 [sub_resource type="TileSet" id="TileSet_t34nh"]
 sources/0 = SubResource("TileSetAtlasSource_53f0d")
 
-[sub_resource type="Animation" id="Animation_hd2a6"]
-resource_name = "zoom_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.49, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(1, 1), Vector2(4, 4)]
-}
-
 [sub_resource type="Animation" id="Animation_dgw50"]
 length = 0.001
 tracks/0/type = "value"
@@ -87,6 +74,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_hd2a6"]
+resource_name = "zoom_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.49, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1), Vector2(4, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_cvf50"]
@@ -151,6 +153,10 @@ texture_hover = ExtResource("10_w6kbb")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 31)
 zoom = Vector2(4, 4)
+limit_left = -150
+limit_top = -85
+limit_right = 150
+limit_bottom = 100
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
 libraries = {
@@ -158,6 +164,25 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -88.0
+offset_top = -31.0
+offset_right = 88.0
+offset_bottom = -8.0
+theme_override_fonts/font = ExtResource("11_vm4ls")
+text = "Select your character:"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -88.0
+offset_top = -30.0
+offset_right = 88.0
+offset_bottom = -7.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_vm4ls")
+text = "Select your character:"
+
+[node name="snow" parent="." instance=ExtResource("12_2ecnp")]
 
 [connection signal="pressed" from="characters/Black" to="." method="_on_black_pressed"]
 [connection signal="pressed" from="characters/Yellow" to="." method="_on_yellow_pressed"]

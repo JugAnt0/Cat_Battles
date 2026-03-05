@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://px6nkudwypln"]
+[gd_scene load_steps=16 format=4 uid="uid://px6nkudwypln"]
 
 [ext_resource type="Script" uid="uid://7ecomghdh14r" path="res://scripts/level_selection.gd" id="1_0rqca"]
 [ext_resource type="Texture2D" uid="uid://bheejfcror6km" path="res://sprites/sprites/sprites/paka's petting sim/ground.png" id="1_gswpo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://nr2ve2pvwrmf" path="res://sprites/sprites/sprites/BUTTONS/locked_level.png" id="4_42rqe"]
 [ext_resource type="Script" uid="uid://mnpqlagj3xfp" path="res://scripts/camera.gd" id="8_0rqca"]
 [ext_resource type="PackedScene" uid="uid://d33k0j7niocuv" path="res://scenes/lock.tscn" id="8_e545p"]
+[ext_resource type="PackedScene" uid="uid://brcr4x2kc12c7" path="res://scenes/snow.tscn" id="9_2wv3l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tuscg"]
 texture = ExtResource("1_gswpo")
@@ -118,7 +119,7 @@ tile_map_data = PackedByteArray("AADz//f/AAAEAAAAAADz//j/AAAEAAAAAADz//n/AAAEAAA
 tile_set = SubResource("TileSet_42rqe")
 
 [node name="levels" type="Node2D" parent="."]
-position = Vector2(-8, 0)
+position = Vector2(-8, 40)
 
 [node name="TextureButton" type="TextureButton" parent="levels"]
 offset_left = -143.0
@@ -359,7 +360,7 @@ zoom = Vector2(0.1, 0.1)
 limit_left = -230
 limit_top = -105
 limit_right = 230
-limit_bottom = 160
+limit_bottom = 230
 script = ExtResource("8_0rqca")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
@@ -368,6 +369,30 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -115.0
+offset_top = -85.0
+offset_right = 117.0
+offset_bottom = -18.0
+theme_override_fonts/font = ExtResource("2_3rh63")
+theme_override_font_sizes/font_size = 32
+text = "Level Selection
+"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -115.0
+offset_top = -84.0
+offset_right = 117.0
+offset_bottom = -17.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3rh63")
+theme_override_font_sizes/font_size = 32
+text = "Level Selection
+"
+
+[node name="snow" parent="." instance=ExtResource("9_2wv3l")]
+position = Vector2(28, -46)
 
 [connection signal="pressed" from="levels/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="levels/TextureButton" to="levels/TextureButton" method="_on_pressed"]

@@ -6,7 +6,7 @@ extends Node2D
 
 func _ready() -> void:
 	player.play("zoom_in")
-	print("Level started")
+
 
 
 func _on_flag_body_entered(body: Node2D) -> void:
