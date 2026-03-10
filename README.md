@@ -1,6 +1,6 @@
 # Paka's Domain
 
-**Paka's Domain** is a 2D pixel-art platformer built with the Godot game engine.
+**Paka's Domain** (changed the name from Cat Battles to Paka's Domain) is a 2D pixel-art platformer built with the Godot game engine.
 
 ## Gameplay
 
@@ -12,7 +12,7 @@ The game features simple platformer mechanics:
 
 ## Project Structure
 
-The repository is organized into three main sections:
+This repo is organized into three main sections:
 
 ### Scenes
 
@@ -43,7 +43,7 @@ Contains the **GDScript** files that control gameplay logic, including:
 * Camera behavior and animations
 * Level progression and unlocking
 * Menu navigation
-* End credits logic
+* Character selection
 
 ### Sprites
 
